@@ -11,6 +11,11 @@ header {
   padding-top: 50px;
 }
 
+div{
+
+  text-align: center;
+}
+
 img  {
 
   align-items: center;
@@ -24,6 +29,13 @@ header button {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.contenedor-imagenes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+margin-bottom: 50px;}
 
 
 .img-izquierda {
@@ -177,24 +189,20 @@ h4{
 .casillas h2 {
   font-size: 1.3em;
   margin-bottom: 10px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
  
 }
-
 .casillas p {
   font-size: 1em;
   margin-bottom: 20px;
   text-align: center; /* Centrar el título */
   font-size: smaller;
-
-
 }
 
 .casillas a {
   font-size: 1em;
   color: #000000;
-  transition: color 0.3s ease-in-out; /* animación al cambiar el color */
-
-  
+  transition: color 0.3s ease-in-out; /* animación al cambiar el color */  
 }
 
 .casillas a:hover {
@@ -207,8 +215,20 @@ h4{
 a{
 
     text-decoration: none;
+    }
+
+
+    footer {
+      background-color: #ffffff;
+      padding: 50px;
+      overflow: hidden;
+    }
     
-
-  
-
-}
+    .footer-left {
+      float: left;
+    }
+    
+    .footer-right {
+      float: right;
+    }
+    
