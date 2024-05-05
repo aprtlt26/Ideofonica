@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        #enterButton {
+            display: none;
+            position: fixed;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 10px;
+            font-size: 9px;
+            cursor: pointer;
+        }
+        header {
+            position: absolute;
+            top: 0; /* Posicionado en la parte superior */
+            left: 50%; /* Central horizontalmente */
+            transform: translateX(-50%); /* Ajuste fino para centrar exactamente */
+            width: auto; /* Ancho automático según el contenido */
+            text-align: center; /* Centra el contenido del header */
+            margin: 10px 0; /* Margen arriba y abajo */
+        }
+        #myCanvas, .container {
+            max-width: 100%;
+            display: block;
+            z-index: -200;
+            position: absolute;
+            top: 70%;
+            transform: translateY(-50%);
+            width: 100%;
+            text-align: center;
+            z-index: -100;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="mapa.webp" alt="Latinamer" style="max-width: 100%; width: 279px; top: 250px;">
+    </header>
+
+    <div id="myCanvas" class="hidden"></div>
+    <audio id="audioPlayer" src="estallido.mp3" preload="auto"></audio>
+    <button id="enterButton" onclick="window.location.href='index.html';"><img src="door-open.svg" alt="">
+
+
+    <script>
+        document.body.addEventListener('click', function() {
+            document.getElementById('audioPlayer').play();
+        });
+    
+        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function unlockAudioContext() {
+            if (audioCtx.state !== 'suspended') return;
+            const b = document.body;
+            const events = ['touchstart', 'touchend', 'mousedown', 'keydown'];
+            events.forEach(e => b.addEventListener(e, unlock, false));
+            function unlock() { audioCtx.resume().then(clean); }
+            function clean() { events.forEach(e => b.removeEventListener(e, unlock)); }
+        }
+        unlockAudioContext();
+
+        window.onload = () => {
+            const audioPlayer = document.getElementById('audioPlayer');
+            try {
+                audioPlayer.play().catch(e => unlockAudioContext());
+            } catch (e) {
+                console.log('Auto-play prevented');
+            }
+        };
+        setTimeout(() => {
+                    document.getElementById('enterButton').style.display = 'block';
+                }, 5000);
+        
+        let circles = [];
+        let waves = [];
+    
+        function setup() {
+            let canvas = createCanvas(826, 550);
+            canvas.parent('myCanvas');
+            noFill();
+            stroke(0);
+            strokeWeight(1);
+    
+            let centerX = width / 2;
+            let centerY = height / 2;
+            circles.push({ x: centerX - 100, y: centerY, r: 125 });
+            circles.push({ x: centerX, y: centerY, r: 100 });
+            circles.push({ x: centerX + 80, y: centerY, r: 110, oval: true });
+    
+            circles.forEach(circle => {
+                addWave(circle.x, circle.y, circle.r, circle.oval);
+            });
+        }
+    
+        function draw() {
+            background(255);
+            drawCircles();
+            updateAndDrawWaves();
+        }
+    
+        function drawCircles() {
+            circles.forEach(circle => {
+                if (circle.oval) {
+                    ellipse(circle.x, circle.y, circle.r * 1.9, circle.r);
+                } else {
+                    ellipse(circle.x, circle.y, circle.r * 2);
+                }
+            });
+        }
+    
+        function updateAndDrawWaves() {
+            waves.forEach((wave, index) => {
+                if (wave.opacity > 0) {
+                    stroke(128, 128, 128, wave.opacity);
+                    if (wave.oval) {
+                        ellipse(wave.x, wave.y, wave.radius * 1.9, wave.radius);
+                    } else {
+                        ellipse(wave.x, wave.y, wave.radius * 3);
+                    }
+                    wave.radius += 4.5;
+                    wave.opacity -= 3;
+                } else {
+                    waves.splice(index, 1);
+                    addWave(wave.x, wave.y, wave.baseRadius, wave.oval);
+                }
+            });
+        }
+    
+        function addWave(x, y, baseRadius, isOval) {
+            waves.push({ x: x, y: y, radius: baseRadius, opacity: 255, oval: isOval, baseRadius: baseRadius });
+        }
+    
+    </script>
+    
+</body>
+</html>
