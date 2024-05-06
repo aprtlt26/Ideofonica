@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="log.png">
     
+<!-- Optimización para motores de búsqueda de Rank Math -  https://rankmath.com/ -->
 <title> Ideofónica CALL for Papers!</title>
 <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
 <link rel="canonical" href="">
@@ -21,6 +22,7 @@
 <meta name="twitter:data1" content="Alfonso Pretelt">
 <meta name="twitter:label2" content="Tiempo de lectura">
 <meta name="twitter:data2" content="Menos de un minuto">
+<!-- /Plugin Rank Math WordPress SEO -->
 
 <link rel="dns-prefetch" href="//stats.wp.com">
 <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
@@ -69,17 +71,12 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
         </div>
         <div class="absolute w-[94%] lg:w-[%] left-[3%] lg:left-[6%] flex items-center justify-between h-full">
             <a href="home.html">
-                <img style="width: 22%" src="LOG.gif" alt="" class="w-60 h-25 2xl:w-28 2xl:h-29 object-cover">
+                <img style="width: 22%" src="logu.webp" alt="" class="w-60 h-25 2xl:w-28 2xl:h-29 object-cover">
             </a>
 
            
             </style>
 
-            <div class="flex itesm-center gap-0">
-                <div id="mega-menu-wrap-menu-principal" class="mega-menu-wrap"><div class="mega-menu-toggle"><div class="mega-toggle-blocks-left"><div class="mega-toggle-block mega-menu-toggle-animated-block mega-toggle-block-1" id="mega-toggle-block-1"><button aria-label="Toggle Menu" class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false">
-                  <span class="mega-toggle-animated-box">
-                    <span class="mega-toggle-animated-inner"></span>
-                  </span>
                  			                
                     
                		                
@@ -365,7 +362,7 @@ var megamenu = {"timeout":"300","interval":"100"};
 <script async="" data-no-optimize="1" src="" id="perfmatters-instant-page-js" data-perfmatters-type="text/javascript" data-cfasync="false" data-no-defer="1" data-no-minify="1"></script>
 </footer>
 <!-- FOOTER MOBILE -->
-<footer class="block md:hidden py-10 sm:py-10 w-full bg-color_text relative" style="background-color: rgba(0, 0, 0, 0.485);">
+<footer class="block md:hidden py-10 sm:py-10 w-full bg-color_text relative" style="background-color: rgb(255, 255, 255);">
 <div class="w-[88%] mx-auto">
     <div class="grid grid-cols-1 gap-10 sm:gap-0">
         <div class="flex flex-col w-full items-center">
@@ -416,13 +413,16 @@ document.body.className = c;
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
+// Selecciona todos los enlaces del menú principal que tienen submenús
 var toggleLinks = document.querySelectorAll('.mega-menu-item-has-children > a');
 
+// Agrega un evento de clic a cada enlace para manejar la visualización del submenú
 toggleLinks.forEach(function(link) {
 link.addEventListener('click', function(event) {
-    event.preventDefault(); 
+    event.preventDefault(); // Previene la navegación a la URL del enlace
     var subMenu = this.parentNode.querySelector('.mega-sub-menu');
     if (subMenu) {
+        // Alterna la visibilidad del submenú
         if (subMenu.style.display === 'block') {
             subMenu.style.display = 'none';
         } else {
