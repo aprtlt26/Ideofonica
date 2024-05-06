@@ -1,4 +1,4 @@
-/* Estilos para la página principal */body {
+body {
   background-color: rgb(255, 255, 255);
   font-family: Arial, sans-serif;
 }
@@ -40,7 +40,8 @@ margin-bottom: 50px;}
 
 .img-izquierda {
   float: left;
-  padding-top: 7px;
+  margin: 70px;
+  padding-top: 9px;
 }
 
 
@@ -53,6 +54,7 @@ margin-bottom: 50px;}
 header img {
   display: inline-block; /* Hacer que la imagen sea un bloque de línea */
   align-items: center;
+  justify-content: center;
   margin: 0 auto; /* Centrar horizontalmente */
   padding-top: 30px;
 }
@@ -179,10 +181,10 @@ h4{
   width: calc(25% - 40px);
   margin: 20px;
   padding: 10px;
-  border: 0.4px solid #e8e6e6;
+  border: 0.4px solid #ffffff;
   border-radius: 10px;
-  background-color: #f8f8f8;
-  box-shadow: 0px 0px 3px 0px #e8e8e8;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 3px 0px #ffffff;
   text-align: center;
 }
 
@@ -206,7 +208,7 @@ h4{
 }
 
 .casillas a:hover {
-  color: #20b5a8; /* nuevo color del enlace al pasar el cursor */
+  color: #9d9d9d; /* nuevo color del enlace al pasar el cursor */
   text-decoration: none; /* quita el subrayado */
 
 }
@@ -232,3 +234,4 @@ a{
       float: right;
     }
     
+     

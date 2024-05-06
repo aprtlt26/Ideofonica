@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="esp" >
+  <head>
+    <meta charset="UTF-8">
+    <title>ideofónica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <html ng-app="myApp">
+
+  </head>
+  <body ng-controller="myController">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+    
+   
+  
+    html, body {
+
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 70;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+ 
+
+
+        
+   
+        #myCanvas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+}
+
+        section {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #f9f9f9;
+        }
+
+        img.responsive {
+            max-width: 100%; /* Hace la imagen completamente responsive */
+            height: auto; /* Mantiene la relación de aspecto */
+        }
+
+        img.small-image {
+            width: 50%; /* Reduce el tamaño de la imagen a la mitad */
+            height: auto; /* Mantiene la relación de aspecto */
+        }
+
+        h1, h2, h3, h4, p {
+            margin: 12px 0;
+        }
+        h2 {
+
+            margin-top: 32px;
+            justify-content: center;
+        }
+        ul {
+
+            padding-left: 10px;
+            font-weight: bold; /* Makes list items bold */
+        }
+        li {
+            margin-bottom: 10px;
+        }
+  
+footer{
+    top: 150px;
+}
+
+  .container{
+    top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+
+
+       
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+
+
+    <div id="myCanvas" class="hidden"></div>
+
+    <a href="textos1.html" class="boton-imagen">
+        <img src="title.webp" width="514"  >
+         </a>       
+        <img src="latinamer.png" alt="Latinamer" style="max-width: 100%; width: 279px;" >
+
+
+    </div >
+
+    <section>
+        <img src="call-for-papers.png" alt="Call for Papers" class="small-image">
+        <p><em>¿Cómo se configura la escucha en la realidad social latinoamericana?</em></p>
+        <p><em>¿Cómo se configura el cuerpo, el humano, el cyborg, desde Latinoamérica o la identidad latinoamericana, pre-cultural, pre-colonial, colonial, decolonial y pre-americana?</em></p>
+        <h3>Reflexión, opinión, crítica social, política, filosofía, o contraposturas a todo lo anterior alrededor de la escucha, el cuerpo, el humano, el cyborg, desde Latinoamérica o la identidad latinoamericana, pre-cultural, pre-colonial, colonial, decolonial y pre-americana.</h3>
+        <h4>Son significativas las siguientes líneas de investigación:</h4>
+        <ul>
+
+            <li> . Pensamiento pre-colonial y de-colonial en torno a la música, el arte sonoro, la escucha y otras auralidades latinoamericanas.</li>
+            <li> . Reflexiones, planteamientos, trasegares filosóficos, crítica social, política y apolítica en el contexto latinoamericano en torno a la escucha, la cultura, el cuerpo, el cyborg, las tecnologías, la información, las artes y el individuo latinoamericano en sí.</li>
+            <li> . Antropología de las músicas y usos del sonido en Latinoamérica o el contexto latinoamericano.</li>
+            <li> . Prácticas y performatividades en Latinoamérica o el contexto latinoamericano.</li>
+            <li> . Migración, exilio y narrativas internacionales en torno a Latinoamérica o el contexto latinoamericano.</li>
+            <li> . Planteamientos, temáticas y tópicos necesarios para Latinoamérica o que configuren fronteras en el contexto latinoamericano.</li>
+        </ul>
+
+        <p>Enviar a: ideofonica@gmail.com</p>
+
+
+    </section>
+    <script>
+        let circles = [];
+        let waves = [];
+
+        function setup() {
+            let canvas = createCanvas(330, 350);
+            canvas.parent('myCanvas');
+            noFill();
+            stroke(0);
+            strokeWeight(0.5);
+
+            let centerX = width / 1.8;
+            let centerY = height / 2;
+            circles.push({ x: centerX - 40, y: centerY, r: 55 });
+            circles.push({ x: centerX, y: centerY, r: 45 });
+            circles.push({ x: centerX + 30, y: centerY, r: 50, oval: true });
+            circles.forEach(circle => {
+                addWave(circle.x, circle.y, circle.r, circle.oval);
+            });
+        }
+
+        function draw() {
+            background(255);
+            drawCircles();
+            updateAndDrawWaves();
+        }
+
+        function drawCircles() {
+            circles.forEach(circle => {
+                if (circle.oval) {
+                    ellipse(circle.x, circle.y, circle.r * 1.9, circle.r);
+                } else {
+                    ellipse(circle.x, circle.y, circle.r * 2);
+                }
+            });
+        }
+
+        function updateAndDrawWaves() {
+            waves.forEach((wave, index) => {
+                if (wave.opacity > 0) {
+                    stroke(100, 100, 100, wave.opacity);
+                    if (wave.oval) {
+                        ellipse(wave.x, wave.y, wave.radius * 1.9, wave.radius);
+                    } else {
+                        ellipse(wave.x, wave.y, wave.radius * 2);
+                    }
+                    wave.radius += 1;
+                    wave.opacity -= 2.8;
+                } else {
+                    waves.splice(index, 1);
+                    addWave(wave.x, wave.y, wave.baseRadius, wave.oval);
+                }
+            });
+        }
+
+        function addWave(x, y, baseRadius, isOval) {
+            waves.push({ x: x, y: y, radius: baseRadius, opacity: 255, oval: isOval, baseRadius: baseRadius });
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>
