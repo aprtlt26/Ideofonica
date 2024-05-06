@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="esp" >
+  <head>
+    <meta charset="UTF-8">
+    <title>ideofónica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <html ng-app="myApp">
+
+  </head>
+  <body ng-controller="myController">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+    
+   
+  
+    html, body {
+
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 70;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+ 
+
+
+        
+   
+        #myCanvas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+}
+
+
+.container{
+    top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+</style>
+    
+    <header>
+        
+        <a href="call.html"><button><em>call for papers</em></button></a>
+
+        <div class="container">
+
+
+
+            <div id="myCanvas" class="hidden"></div>
+        
+                <img src="title.webp" alt="Ideofónica Title" style="max-width:100%; width: 379px; align-self: center;">
+               
+                <img src="latinamer.png" alt="Latinamer" style="max-width: 100%; width: 279px;" >
+        
+        
+            </div >
+        </header>
+     
+      <section class="casillas">
+<div>
+
+        <h2><a href="indextexto1.html">Memorias para un futuro. Cine representación y política en épocas de crisis.
+        </a></h2>
+        <p>Hernán Bayón</p>
+      </div>
+
+     <div> 
+      <h2><a href="indextexto2.html">Haciendo de la escucha la cotidianidad.</a></h2>
+      <p>Melissa Vargas Franco.</p>
+    </div>
+
+
+    <div> 
+          <h2><a href="indextexto3.html">La Densidad Andina, el universo Khipunk.</a></h2>
+        <p>José Luis Jácome Guerrero</p>
+      </div>
+
+      <div> 
+        <h2><a href="indextexto4.html">Poeta de Llorente.</a></h2>
+        <p>Gustavo Andrés Valdés Aceroo</p>
+      </div>
+
+      <div> 
+        <h2><a href="indextexto5.html"target="_blank">Transgresión de la colonialidad: Los Misak derribaron a Sebastián de Belalcázar</a></h2>
+        <p>Oscar Casallas Y Catalina Higuera </p>
+      </div>
+
+      <div> 
+        <h2><a href="indextexto6.html">Cuerpo Político Ausente</a></h2>
+        <p>Jenny Toro Salas</p>
+      </div>
+        
+
+      <div> 
+  <h2><a href="indextexto7.html">Sobre cuerpos, memorias olvidadas y el deseo de que las imágenes toquen el real.</a></h2>
+          <p>Anderson Feliciano</p>
+        </div>
+
+     
+        <div> 
+          <h2> <a href="indextexto8.html">La fábula de la falsa tecnología.</a> </h2>
+          <p>Eblis Alvarez</p>
+        </div>
+
+     
+
+ 
+      <div> 
+        <h2><a href="indextexto9.html">Not quiet animal: Lo casi humano en la obra de Patricia Piccinini.</a> </h2>
+        <p>Nicolás Cadavid</p>
+        </div>
+
+    <div> 
+        <h2><a href="indextexto10.html">Escuchar</a></h2>
+        <p>Mauricio Bejarano</p>
+      </div>
+   
+    
+
+    </section>
+
+
+
+      
+      
+    </main>
+
+</section>
+<script>
+    let circles = [];
+    let waves = [];
+
+    function setup() {
+        let canvas = createCanvas(330, 350);
+        canvas.parent('myCanvas');
+        noFill();
+        stroke(0);
+        strokeWeight(0.5);
+
+        let centerX = width / 1.8;
+        let centerY = height / 2;
+        circles.push({ x: centerX - 40, y: centerY, r: 55 });
+        circles.push({ x: centerX, y: centerY, r: 45 });
+        circles.push({ x: centerX + 30, y: centerY, r: 50, oval: true });
+        circles.forEach(circle => {
+            addWave(circle.x, circle.y, circle.r, circle.oval);
+        });
+    }
+
+    function draw() {
+        background(255);
+        drawCircles();
+        updateAndDrawWaves();
+    }
+
+    function drawCircles() {
+        circles.forEach(circle => {
+            if (circle.oval) {
+                ellipse(circle.x, circle.y, circle.r * 1.9, circle.r);
+            } else {
+                ellipse(circle.x, circle.y, circle.r * 2);
+            }
+        });
+    }
+
+    function updateAndDrawWaves() {
+        waves.forEach((wave, index) => {
+            if (wave.opacity > 0) {
+                stroke(100, 100, 100, wave.opacity);
+                if (wave.oval) {
+                    ellipse(wave.x, wave.y, wave.radius * 1.9, wave.radius);
+                } else {
+                    ellipse(wave.x, wave.y, wave.radius * 2);
+                }
+                wave.radius += 1;
+                wave.opacity -= 2.8;
+            } else {
+                waves.splice(index, 1);
+                addWave(wave.x, wave.y, wave.baseRadius, wave.oval);
+            }
+        });
+    }
+
+    function addWave(x, y, baseRadius, isOval) {
+        waves.push({ x: x, y: y, radius: baseRadius, opacity: 255, oval: isOval, baseRadius: baseRadius });
+    }
+
+
+</script>
+
+  </body>
+</html>
