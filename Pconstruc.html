@@ -2,7 +2,7 @@
 <html lang="es" prefix="og: https://ogp.me/ns#" data-lt-installed="true"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="LOG.webp">
+    <link rel="icon" type="image/x-icon" href="log.png">
     
 <!-- Optimización para motores de búsqueda de Rank Math -  https://rankmath.com/ -->
 <title> Ideofónica CALL for Papers!</title>
@@ -86,7 +86,7 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
                     <ul class="mega-sub-menu" style="">
                     </li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-240" id="mega-menu-item-240"><a class="mega-menu-link" href="involucrate.html">Archivo Sonoro</a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-230" id="mega-menu-item-230"><a class="mega-menu-link" href="contac.html">Contacto</a></li></ul>
                     </li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-244" id="mega-menu-item-244"><a class="mega-menu-link" href="#" aria-haspopup="true" aria-expanded="false" tabindex="0">Qué Hacemos<span class="mega-indicator" data-has-click-event="true"></span></a><ul class="mega-sub-menu" style="">
-                    </li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-240" id="mega-menu-item-240"><a class="mega-menu-link" href="programas.html">Programas</a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-230" id="mega-menu-item-230"><a >
+                    </li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-240" id="mega-menu-item-240"><a class="mega-menu-link" href="Pconstruc.html">Programas</a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-230" id="mega-menu-item-230"><a >
                    
                     </li></ul></div>				                
                     
@@ -121,74 +121,76 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
 
 
 </div>
-  
-   
+    <!-- CURSOR -->
+    
 
+    <!-- OPACITY 0 -->
+    <div class="cursor hidden w-6 h-6 rounded-full bg-secondary bg-opacity-90 fixed top-0 left-0 lg:flex items-center justify-center" style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) translate(483px, 350px); opacity: 0.9; background: rgba(0, 0, 0, 0.514);"></div>
+    <div class="fixed top-0 left-0 opacity-0 w-2 h-2"></div>
+
+    <div></div>
     <style>
-
-body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgb(255, 255, 255);
-        }
-          #message {
-            position: absolute;
-            color: rgb(0, 0, 0);
+      
+        #message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
             font-size: 2em;
+            z-index: 10;
         }
-
-        #myCanvas{
-            z-index: 200;
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
         }
-
     </style>
-    <body>
-        <div id="message">Página en Construcción...</div>
-
-        <div id="myCanvas"></div>
-
-        <script>
+</head>
 
 
-let brownNoise; 
-let time = 0;   
+<body>
+    <div id="message">Página en Construcción...</div>
+    <script>
+        let brownNoise;
+        let time = 0;
 
-function setup() {
-    createCanvas(windowWidth, windowHeight);
-    brownNoise = new p5.Noise('brown');
-    brownNoise.start();
-    brownNoise.amp(0); 
-    frameRate(30); 
-}
-
-function draw() {
-    background(255);
-    loadPixels();
-    for (let x = 0; x < width; x++) {
-        for (let y = 0; y < height; y++) {
-            const index = (x + y * width) * 4;
-            const bright = random(255);
-            pixels[index] = bright;
-            pixels[index + 1] = bright;
-            pixels[index + 2] = bright;
-            pixels[index + 3] = 255;
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            brownNoise = new p5.Noise('brown');
+            brownNoise.start();
+            brownNoise.amp(0);
+            frameRate(30);
         }
-    }
-    updatePixels();
 
-    let volume = (sin(time) + 1) / 2 * 0.3; 
-    brownNoise.amp(volume, 0.1); 
+        function draw() {
+            background(255);
+            loadPixels();
+            for (let x = 0; x < width; x++) {
+                for (let y = 0; y < height; y++) {
+                    const index = (x + y * width) * 4;
+                    const bright = random(255);
+                    pixels[index] = bright;
+                    pixels[index + 1] = bright;
+                    pixels[index + 2] = bright;
+                    pixels[index + 3] = 255;
+                }
+            }
+            updatePixels();
 
-    time += 0.2; 
-}
+            let volume = (sin(time) + 1) / 2 * 0.3;
+            brownNoise.amp(volume, 0.1);
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
+            time += 0.2;
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
 
 
         </script>
@@ -200,6 +202,8 @@ function windowResized() {
 
 </body>
 </html>
+
+
 
 
 
