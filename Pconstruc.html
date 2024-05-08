@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página en Construcción</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block; /* Removes margin in the bottom */
+        }
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
 </head>
@@ -54,18 +63,18 @@
     function startAudio() {
         if (!started) {
             started = true;
-            loop();
+            loop(); // Comienza el bucle de dibujo y sonido
             brownNoise.amp(0.3, 0.5); // Aumenta el volumen suavemente
         }
     }
 
+    // Eventos para iniciar el audio y la animación visual al interactuar con la página
     document.addEventListener('click', startAudio);
-    document.addEventListener('touchstart', startAudio);
+    document.addEventListener('touchstart', startAudio, {passive: true}); // Agrega passive para mejorar el rendimiento en móviles
 </script>
 
 </body>
 </html>
-
 
 
 
