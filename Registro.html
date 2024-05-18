@@ -223,6 +223,12 @@ h3{
     color: rgb(230, 226, 189);
 
 }
+
+footer{
+
+  top: 150px;
+}
+
      
     </style>
 </div>
@@ -234,36 +240,15 @@ h3{
         <div id="myCanvas"></div>
 
         
-    <div class="section">
-        <h2>IDEOFÓNICA</h2>
-        <div id="login-section" style="display:block;">
-          <!-- Quita action y method, maneja el submit con JS -->
-          <form id="login-form">
-            <input type="email" id="login-email" placeholder="Your Email" required><br>
-            <input type="password" id="login-password" placeholder="Your Password" required><br>
-            <!-- Cambia el tipo a button para prevenir el submit por defecto -->
-            <button type="button" id="login-btn">Entrar</button>
-          </form>
-        </div>
-      <section> 
-        <div id="register-section" style="display: none;">
-          <h3>Registro</h3>
-          <!-- Quita action y method, maneja el submit con JS -->
-          <form id="register-form">
-            <input type="text" id="nombre" placeholder="Your Name" required><br>
-            <input type="email" id="correo" placeholder="Your Email" required><br>
-            <input type="password" id="clave" placeholder="Your Password" required><br>
-            <!-- Cambia el tipo a button para prevenir el submit por defecto -->
-            <button type="button" id="register-btn">Registrar</button>
-          </form>
-        </div>
-        <button onclick="toggleForm()" style="background-color: #ffffff;"><img src="box-arrow-right.svg"></button>
-      </div>
-      
-
+   
 
       <div id="tree-sketch-container"></div>
 
+
+
+
+
+      <section></section>
 
 <script>
 
@@ -353,23 +338,37 @@ function toggleForm() {
 
 
 
-<footer  class="hidden md:block py-10 sm:py-10 w-full bg-color_text relative"style="background-color: rgba(0, 0, 0, 0.300)"   >
-    <div class="w-[88%] mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-0">
-            <div class="flex flex-col w-full">
-                <img src="logu.webp" alt="" style="margin-right: 70px;" class="-ml-2 sm:ml-0 w-32 sm:w-40 object-cover perfmatters-lazy entered pmloaded" ></noscript>
-                <p class="font-Dosis font-light text-white mt-3 sm:mt-8 max-w-full sm:max-w-[25%] text-justify">Creemos en la re-evolución poética, para la tranformación.</p>
-            </div>
-            <div class="flex flex-col w-full">
-                <h2 class="text-3xl uppercase font-Paytone font-bold text-white">Contacto</h2>
-                <p class="mt-0 text-white font-Dosis font-light">Bogotá - Colombia</p>
-                <p class="mt-6 sm:mt-14 text-white font-Dosis font-light">Email: ideofonica@gmail.com</p>
-            </div>
-            <div class="flex flex-col w-full">
-                <h2 class="text-3xl uppercase font-Paytone font-bold text-white">Hacemos parte de</h2>
-                    <div class="flex items-center gap-2 mt-4 -ml-2 sm:ml-0">
-                        <img src="riad.webp" alt="" class="h-24 logos-footer-right perfmatters-lazy entered pmloaded" data-src="" data-ll-status="loaded"><noscript><img src="" alt="" class="h-24 logos-footer-right"></noscript>
-                    </div>
+<footer  class="hidden md:block py-10 sm:py-10 w-full bg-color_text relative"style="background-color: rgba(0, 0, 0, 0)"   >
+   
+
+
+            <div class="section">
+                <div id="login-section" style="display:none;">
+                  <!-- Quita action y method, maneja el submit con JS -->
+                  <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Your Email" required><br>
+                    <input type="password" id="login-password" placeholder="Your Password" required><br>
+                    <!-- Cambia el tipo a button para prevenir el submit por defecto -->
+                    <button type="button" id="login-btn">Entrar</button>
+                  </form>
+                </div>
+              <section> 
+                <div id="register-section" style="display: block;">
+                  <!-- Quita action y method, maneja el submit con JS -->
+                  <form id="register-form">
+                    <input type="text" id="nombre" placeholder="Your Name" required><br>
+                    <input type="email" id="correo" placeholder="Your Email" required><br>
+                    <input type="password" id="clave" placeholder="Your Password" required><br>
+                    <!-- Cambia el tipo a button para prevenir el submit por defecto -->
+                    <button type="button" id="register-btn">Registrar</button>
+                  </form>
+                </div>
+                <button onclick="toggleForm()" style="background-color: #ffffff;"><img src="box-arrow-right.svg"></button>
+              </div>
+              
+        
+         
+            
                 <div class="flex items-center gap-2 mt-4 -ml-2 sm:ml-0">
                 </div>
             </div>
@@ -450,10 +449,7 @@ var megamenu = {"timeout":"300","interval":"100"};
                 <span class="text-2xl uppercase font-Paytone font-bold text-white">Contacto</span>
             </div>
             <div class="flex flex-col mt-2 transition duration-500 ease-out info-contacto">
-                <h2 class="text-3xl uppercase font-Paytone font-bold text-white">Contacto</h2>
-                <p class="mt-0 text-white font-Dosis font-light">Bogotá - Colombia</p>
-                <p class="mt-6 sm:mt-14 text-white font-Dosis font-light">Email: aprtlt26@gmail.com</p>
-                <p class="text-white font-Dosis font-light mt-1">Teléfono: +57 3160533996</p>
+                
             </div>
             </div>
         </div>
