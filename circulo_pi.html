@@ -369,6 +369,7 @@ font-size: 15px;
                     });
                     document.getElementById('description').textContent = 'El ruido verde incrementa la energía con la frecuencia, contrario al ruido marrón.';
                     break;
+			    
                 case 'blue':
                     buffer = generateNoise((output, bufferSize) => {
                         for (let i = 0; i < output.length; i++) {
@@ -376,8 +377,7 @@ font-size: 15px;
                             output[i] *= (i / bufferSize) * (i / bufferSize); // Increasing more aggressively with frequency
                         }
                     });
-                    document.getElementById('description').textContent = 'El ruido azul incrementa la energía con la frecuencia de manera más agresiva que el ruido verde.';
-                    break;
+                  
             }
             const source = context.createBufferSource();
             source.buffer = buffer;
