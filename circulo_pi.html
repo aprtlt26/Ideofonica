@@ -379,6 +379,9 @@ font-size: 15px;
                     });
                   
             }
+		  document.getElementById('description').textContent = 'El ruido azul incrementa la energía con la frecuencia de manera más agresiva que el ruido verde.';
+                    break;
+            }
             const source = context.createBufferSource();
             source.buffer = buffer;
             source.connect(context.destination);
