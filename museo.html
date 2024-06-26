@@ -1,4 +1,5 @@
 
+
 <html lang="es" prefix="og: https://ogp.me/ns#" data-lt-installed="true"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -132,12 +133,23 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
     <div class="fixed top-0 left-0 opacity-0 w-2 h-2"></div>
 
     <style>
-        body {
+       body {
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+        }
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8); /* Ajusta la opacidad aquí */
+            z-index: -1;
         }
         h1 {
             margin: 120px;
@@ -167,17 +179,27 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
         }
         .viewer {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin-top: 20px;
             width: 90%;
             height: 500px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
         }
         .viewer img, .viewer video, .viewer iframe {
             max-width: 100%;
             max-height: 100%;
+        }
+        .info-box {
+            margin-top: 20px;
+            width: 90%;
+            background-color: #fffcfc;
+            padding: 10px;
+            border: 1px solid #74e8c0;
+            border-radius: 10px;
+            text-align: center;
         }
         @media (max-width: 600px) {
             .gallery img, .gallery video, .gallery .pdf-thumbnail {
@@ -196,43 +218,45 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
     <div class="container">
         <div class="gallery">
             <!-- Añadir miniaturas aquí -->
-            <img src="VALENTINA REYES MORENO.jpeg" alt="Image 1" onclick="showInViewer(this.src, 'img')">
-            <img src="p17179766114786225679184519307988 - LESLY ALEJANDRA CHABLE MENDEZ.jpg" alt="Image 2" onclick="showInViewer(this.src, 'img')">
-            <img src="20240427_073832 - ARLETTE RAQUEL SANCHEZ ORTEGA (1).jpg" alt="Image 3" onclick="showInViewer(this.src, 'img')">
-            <img src="WhatsApp Image 2024-06-22 at 1.44.34 PM - KINERET JULIETTE SANCHEZ ORTEGA.jpeg" alt="Image 4" onclick="showInViewer(this.src, 'img')">
-            <img src="IMG_20240624_172814 - ALAN EMMANUEL PEREZ ALCALA.jpg" alt="Image 5" onclick="showInViewer(this.src, 'img')">
-            <img src="teatrino - JEOVANA VALERIA ALMAZÁN ZABALA.jpeg" alt="Image 6" onclick="showInViewer(this.src, 'img')">
-		  <img src="17193778370476954185578848285406 - LEONARDO ADONAY DIAZ VERA.jpg" alt="Image 4" onclick="showInViewer(this.src, 'img')">
-            <img src="Lucero - LIA LUCERO LEZAMA PONCE.jpg" alt="Image 5" onclick="showInViewer(this.src, 'img')">
-            <img src="Captura de pantalla_26-6-2024_71210_mail.google.com - MARIA FERNANDA CERVERA DAVILA.jpeg" alt="Image 6" onclick="showInViewer(this.src, 'img')">
+            <img src="VALENTINA REYES MORENO.jpeg" alt="Image 1" onclick="showInViewer(this.src, 'img', 'VALENTINA REYES MORENO - Habla sobre alguien esta activo(a) y se anima a luchar por sus valores y el esfuerzo por las cosas. Los ojos del gato representa el estar activo(a) o se anima y el fuego la lucha por la vida.')">
+            <img src="p17179766114786225679184519307988 - LESLY ALEJANDRA CHABLE MENDEZ.jpg" alt="Image 2" onclick="showInViewer(this.src, 'img', 'LESLY ALEJANDRA CHABLE MENDEZ - Es un círculo de colores que representan todas las emociones pero en colores')">
+            <img src="20240427_073832 - ARLETTE RAQUEL SANCHEZ ORTEGA (1).jpg" alt="Image 3" onclick="showInViewer(this.src, 'img', 'ARLETTE RAQUEL SANCHEZ ORTEGA - Este es un retrato que realicé a partir de una foto para una amiga de Brasil. Me gusta hacer retratos por que creo que es una manera de representar no solo un rostro sino lo que percibimos de la persona además me gusta practicar dibujos rápidos para representar la espontaneidad del momento. ' )">
+            <img src="WhatsApp Image 2024-06-22 at 1.44.34 PM - KINERET JULIETTE SANCHEZ ORTEGA.jpeg" alt="Image 4" onclick="showInViewer(this.src, 'img', 'KINERET JULIETTE SANCHEZ ORTEGA - Este es un trabajo en lienzo en el cual se representa un paisaje. Para esta pintura se utilizó lo que es el oleo. Se trabajo la mayor parte con pinceles pero utilizando espatula al final para dar algunas texturas a la pintura y haciendo veladuras (pintura con mucho aceite) para representar las sombras de los objetos.')">
+            <img src="IMG_20240624_172814 - ALAN EMMANUEL PEREZ ALCALA.jpg" alt="Image 5" onclick="showInViewer(this.src, 'img', '- ALAN EMMANUEL PEREZ ALCALA - Mi Ola De Miedo . Así la llamo porque es bella por fuera pero cuando se enoja te lleva lo más profundo y oscuro de ella.')">
+            <img src="teatrino - JEOVANA VALERIA ALMAZÁN ZABALA.jpeg" alt="Image 6" onclick="showInViewer(this.src, 'img', 'JEOVANA VALERIA ALMAZÁN ZABALA - es un teatrino y sus titiridedos')">
+            <img src="17193778370476954185578848285406 - LEONARDO ADONAY DIAZ VERA.jpg" alt="Image 7" onclick="showInViewer(this.src, 'img', 'LEONARDO ADONAY DIAZ VERA - Pelea entre una tortuga gigante y moustros buenos en una selva mágica')">
+            <img src="Lucero - LIA LUCERO LEZAMA PONCE.jpg" alt="Image 8" onclick="showInViewer(this.src, 'img', 'LIA LUCERO LEZAMA PONCE - Me gusta Modelar en miniatura con material como plastilina, fomy, porcelana.')">
+            <img src="Imagen de WhatsApp 2024-06-26 a las 09.05.05_9c77c99f - EVANGELISTA SALINAS MADAI HOMESCHOOL.jpg" alt="Image 8" onclick="showInViewer(this.src, 'img', 'LIA LUCERO LEZAMA PONCE - Al tomar este tipo de fotos, me hace sentir muchas emociones sobre todo nostalgia.')">
 
-
-            <video src="20240623_161001 - SCARLETT ANGELIQUE DURAZO MONROY.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-            <video src="20240623_161447 - TIFFANY AMBER DURAZO MONROY.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-            <video src="May be - Piano por James Yahoshua - JAMES YAHOSHUA GAMEZ IZQUIERDO.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-            <video src="WIN_20240624_15_33_08_Pro - GAMALIEL DE LA TORRE MENENDEZ.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-            <video src="VID_20240507_180436031 - MARIO GAEL SAN JUAN SANCHEZ.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-            <video src="20240622_150859 - TATIANA MARISOL LEZAMA PONCE.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-            <video src="WhatsApp Video 2024-06-25 at 5.13.28 PM - EMILIANO HERRERA CRUZ.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
-
-            <video src="WhatsApp Video 2024-06-14 at 12.10.38 PM - JOSUE ALEJANDRO TREJO PEREZ.mp4" onclick="showInViewer(this.src, 'video')" controls muted></video>
+            <img src="Captura de pantalla_26-6-2024_71210_mail.google.com - MARIA FERNANDA CERVERA DAVILA.jpeg" alt="Image 9" onclick="showInViewer(this.src, 'img', ' MARIA FERNANDA CERVERA DAVILA - Mi dibujo La niña de hilo se basa en una chica que por presion social la mayor parte del tiempo se la pasaba viendo que podia modificar en si misma para poder complacer los gustos de los demas por agradar a la gente. En el dibujo se puede ver partes de su cuerpo son unidas cosidas simulando distintas pieles,deformaciones y utensilios de hospital usados por ella. Es por esto que se llama La niña de hilo. Una de sus manos esta algo descocida por lo que se ve que esta de el lado equivocado y esta arreglando su corazon como se puede ver cosiendolo ya que nuevamente esta cambiando algo. Ahora, este dibujo no es como se veria realmente la chica, sino,como se siente; ya no sabes quien eres en realidad y tienes muchas cosas que no coinciden y son diferentes a lo que realmente eres.')">
+            <video src="20240623_161001 - SCARLETT ANGELIQUE DURAZO MONROY.mp4" onclick="showInViewer(this.src, 'video', 'SCARLETT ANGELIQUE DURAZO MONROY - Hice una figura de papel, por que desde chiquita he estado haciendo manualidades')" controls muted></video>
+            <video src="20240623_161447 - TIFFANY AMBER DURAZO MONROY.mp4" onclick="showInViewer(this.src, 'video', 'TIFFANY AMBER DURAZO MONROY - Hice un rompecabezas de carton')" controls muted></video>
+            <video src="May be - Piano por James Yahoshua - JAMES YAHOSHUA GAMEZ IZQUIERDO.mp4" onclick="showInViewer(this.src, 'video', 'JAMES YAHOSHUA GAMEZ IZQUIERDO - La canción que toque se titula: May be de Yiruma, es una pieza que a mi me gusta mucho y también muchas otras piezas de Yiruma, yo la sentí un poco difícil porque yo llevo unos pocos meses con el piano a si que creo que no me fue tan mal :D')" controls muted></video>
+            <video src="WIN_20240624_15_33_08_Pro - GAMALIEL DE LA TORRE MENENDEZ.mp4" onclick="showInViewer(this.src, 'video', ' GAMALIEL DE LA TORRE MENENDEZ - Una disculpa me falto otro video pero solo es para darles la despedia')" controls muted></video>
+            <video src="VID_20240507_180436031 - MARIO GAEL SAN JUAN SANCHEZ.mp4" onclick="showInViewer(this.src, 'video', '- MARIO GAEL SAN JUAN SANCHEZ - Practico el arte de la mano vacía el cual significa que nunca lo ocupare para dañar sino para proteger.')" controls muted></video>
+            <video src="20240622_150859 - TATIANA MARISOL LEZAMA PONCE.mp4" onclick="showInViewer(this.src, 'video', ' TATIANA MARISOL LEZAMA PONCE - Me gusta mucho hacer teatro con mupets y en este video invito a hacer conciencia acerca de el abandono animal')" controls muted></video>
+            <video src="WhatsApp Video 2024-06-25 at 5.13.28 PM - EMILIANO HERRERA CRUZ.mp4" onclick="showInViewer(this.src, 'video', 'EMILIANO HERRERA CRUZ - Me gusta mucho realizar figuras en fomi moldeable ya que es una forma de distraccion y canalizar emociones para mi.')" controls muted></video>
+            <video src="WhatsApp Video 2024-06-14 at 12.10.38 PM - JOSUE ALEJANDRO TREJO PEREZ.mp4" onclick="showInViewer(this.src, 'video', 'JOSUE ALEJANDRO TREJO PEREZ - es una arpia la cual me inspire en un libro del cual tenia una imagen de una arpia y me gusto como se veia y pues la dibuje lo mejor que pude pero con efecto de lapiz y el fondo bueno las ramas de color')" controls muted></video>
             <!-- Añadir más miniaturas según sea necesario -->
         </div>
         <div class="viewer" id="viewer"></div>
+        <div class="info-box" id="info-box">Seleccione una imagen o video para ver detalles</div>
     </div>
 
     <script>
-        function showInViewer(src, type) {
+        function showInViewer(src, type, info) {
             const viewer = document.getElementById('viewer');
+            const infoBox = document.getElementById('info-box');
             if (type === 'img') {
                 viewer.innerHTML = `<img src="${src}" alt="Image">`;
             } else if (type === 'video') {
-                viewer.innerHTML = `<video src="${src}" controls></video>`;
+                viewer.innerHTML = `<video src="${src}" controls autoplay></video>`;
             } else if (type === 'pdf') {
                 viewer.innerHTML = `<iframe src="${src}" frameborder="0"></iframe>`;
             }
+            infoBox.textContent = info;
         }
-    </script>        
+    </script>     
 
 
 
@@ -352,7 +376,13 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
                   </form>
                 </div>
               </div>
+              <div>
               <img src="logocolegio.webp" alt="">
+            </div>
+            <div>
+                <img src="LOG.gif" alt="">
+            </div>
+              
     
          <p style="display: flex; justify-content: center; padding-top: 40px; color: #ffffff;"> IDEOFÓNICA® 2021 </p>
             
