@@ -156,6 +156,13 @@
                 alert('Hubo un error al subir el archivo.');
             }
         });
+
+               await db.collection('artworks').add({
+    name: name,
+    description: description,
+    fileURL: fileURL,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+});
     </script>
 </body>
 </html>
