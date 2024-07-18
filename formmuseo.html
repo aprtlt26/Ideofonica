@@ -138,6 +138,9 @@
             }
 
             try {
+                // Se autentica un usuario anónimo para permitir el acceso a Firebase
+                await auth.signInAnonymously();
+
                 const user = auth.currentUser;
                 if (!user) {
                     throw new Error('No hay usuario autenticado.');
@@ -168,3 +171,4 @@
     </script>
 </body>
 </html>
+
