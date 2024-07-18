@@ -104,6 +104,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <script>
         // Firebase Configuration
         const firebaseConfig = {
@@ -121,6 +122,7 @@
 
         const auth = firebase.auth();
         const storage = firebase.storage();
+        const db = firebase.firestore();
 
         document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -147,7 +149,14 @@
                 await fileRef.put(file);
                 const fileURL = await fileRef.getDownloadURL();
 
-                alert('Archivo subido con éxito.');
+                await db.collection('artworks').add({
+                    name: name,
+                    description: description,
+                    fileURL: fileURL,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                alert('Archivo y datos subidos con éxito.');
                 console.log('Nombre:', name);
                 console.log('Descripción:', description);
                 console.log('URL del archivo:', fileURL);
@@ -156,13 +165,6 @@
                 alert('Hubo un error al subir el archivo.');
             }
         });
-
-               await db.collection('artworks').add({
-    name: name,
-    description: description,
-    fileURL: fileURL,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-});
     </script>
 </body>
 </html>
