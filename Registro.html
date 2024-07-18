@@ -341,7 +341,7 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
                 console.log("Usuario registrado:", userCredential.user);
                 await setDoc(doc(db, "usuarios", userCredential.user.uid), { nombre, correo });
                 alert("Usuario registrado exitosamente.");
-                window.location.href = 'form.html'; // Ajusta esta URL si es necesario
+                window.location.href = 'formmuseo.html'; 
             } catch (error) {
                 console.error("Error al registrar el usuario:", error);
                 alert(error.message);
@@ -355,7 +355,7 @@ var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":
                 const userCredential = await signInWithEmailAndPassword(auth, correo, clave);
                 console.log("Usuario logueado:", userCredential.user);
                 alert("Inicio de sesión exitoso.");
-                window.location.href = 'form.html'; // Ajusta esta URL si es necesario
+                window.location.href = 'formmuseo.html'; // Ajusta esta URL si es necesario
             } catch (error) {
                 console.error("Error al iniciar sesión:", error);
                 alert(error.message);
