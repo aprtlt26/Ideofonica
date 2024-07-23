@@ -102,7 +102,6 @@
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <script>
@@ -120,7 +119,6 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        const auth = firebase.auth();
         const storage = firebase.storage();
         const db = firebase.firestore();
 
@@ -138,16 +136,8 @@
             }
 
             try {
-                // Se autentica un usuario anónimo para permitir el acceso a Firebase
-                await auth.signInAnonymously();
-
-                const user = auth.currentUser;
-                if (!user) {
-                    throw new Error('No hay usuario autenticado.');
-                }
-
                 const storageRef = storage.ref();
-                const fileRef = storageRef.child(`uploads/${user.uid}/${file.name}`);
+                const fileRef = storageRef.child(`uploads/${file.name}`);
 
                 await fileRef.put(file);
                 const fileURL = await fileRef.getDownloadURL();
@@ -159,7 +149,7 @@
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
-                alert('Archivo y datos subidos con éxito.');
+                alert('Archivo y datos subidos con éxito. Serán cargados al museo emocional después de la debida revisión.');
                 console.log('Nombre:', name);
                 console.log('Descripción:', description);
                 console.log('URL del archivo:', fileURL);
@@ -171,4 +161,5 @@
     </script>
 </body>
 </html>
+
 
