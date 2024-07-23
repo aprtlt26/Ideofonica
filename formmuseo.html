@@ -101,9 +101,9 @@
         </form>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script>
         // Firebase Configuration
         const firebaseConfig = {
@@ -136,11 +136,9 @@
             }
 
             try {
-                const storageRef = storage.ref();
-                const fileRef = storageRef.child(`uploads/${file.name}`);
-
-                await fileRef.put(file);
-                const fileURL = await fileRef.getDownloadURL();
+                const storageRef = storage.ref().child(`uploads/${file.name}`);
+                await storageRef.put(file);
+                const fileURL = await storageRef.getDownloadURL();
 
                 await db.collection('artworks').add({
                     name: name,
@@ -161,5 +159,6 @@
     </script>
 </body>
 </html>
+
 
 
